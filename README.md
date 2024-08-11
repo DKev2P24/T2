@@ -96,7 +96,7 @@ def prmx(*args):
 def ord(*args):
     for i in args:
         i.sort()
-    print("Listas ordenadas de mayor a menor:")
+    print("Listas ordenadas de menor a mayor:")
     for i in args:
         print(i)
 
