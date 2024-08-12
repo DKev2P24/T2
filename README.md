@@ -64,7 +64,7 @@ if __name__ == "__main__":
 ```
 ## Ejercicio 5
 ```python
-def iteracion(a,b):
+def mcd_iteracion(a,b):
     if a < b:
         a, b = b, a
     if a == b:
@@ -78,18 +78,27 @@ def iteracion(a,b):
             a = residuo
             if a < b:
                 a, b = b, a
+def mcd_recursivo(a, b):
+    if a < b:
+        a, b = b, a
+    if b == 0:
+        return a
+    return mcd_recursivo(b, a % b)
+
 def funcionMcm(mcd,a,b):
-    mcm = int((a*b) / mcd)
+    mcm = (a*b) // mcd
     return mcm
 def fin (mcd,mcm,a,b):
-    print(f"El maximo comun divisor de {a} y {b} es {mcd}, por ello:")
-    print(f"El minimo comun multiplo es igual a {mcm}")
+    print(f"Y ya que el máximo común divisor es {mcd}, entonces:")
+    print(f"El mínimo común multiplo es igual a {mcm}")
 
 if __name__ == "__main__":
     print("Digita dos numeros enteros para hallar su MCM")
     a = int(input("El primero:"))
     b = int(input("El segundo:"))
-    mcd = iteracion(a,b)
+    mcd = mcd_iteracion(a,b)
+    mcd2 = mcd_recursivo(a,b)
+    print(f"Se obtiene por iteracion al MCD como {mcd} y por recursion {mcd2}, es decir, el mismo resultado")
     mcm = funcionMcm(mcd,a,b)
     fin(mcd,mcm,a,b)
 ```
