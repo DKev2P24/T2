@@ -2,34 +2,34 @@
 Taller 2 
 ## Ejercicio 2
 ```python
-def iteracion(a,b):
-    if a < b:
-        a, b = b, a
-    if a == b:
-        MCD = a
-        return MCD
-    else:
-        while a >= b:
-            residuo = a - b
-            if residuo == 0:
-                return a
-            a = residuo
-            if a < b:
-                a, b = b, a
-def funcionMcm(mcd,a,b):
-    mcm = int((a*b) / mcd)
-    return mcm
-def fin (mcd,mcm,a,b):
-    print(f"El maximo comun divisor de {a} y {b} es {mcd}, por ello:")
-    print(f"El minimo comun multiplo es igual a {mcm}")
+def num(x): # Funcion de Entero a Lista de Digitos
+    k = []  # Lista Vacia a agregar Digitos Enteros
+    l = []  # Lista Vacia a agregar Digitos Decimales
+
+    cantidadDecimales = int(input("¿Cuantos decimales tiene el numero?"))
+    digitosEnteros = int(x)
+    digitosDecimales = x - digitosEnteros
+    digitosDecimales = int(digitosDecimales*10**cantidadDecimales)
+
+    while digitosEnteros > 0:  # para evitar problemas se toman valores positivos
+        dg = digitosEnteros % 10  # se toma el ultimo digito, que es el residuo del cociente
+        k.insert(0, dg) 
+        digitosEnteros = digitosEnteros // 10
+
+    while digitosDecimales > 0:  # para evitar problemas se toman valores positivos
+        dg = digitosDecimales % 10  # se toma el ultimo digito, que es el residuo del cociente
+        l.insert(0, dg) 
+        digitosDecimales = digitosDecimales // 10
+    return k, l
+
+def fin(a, enteros, decimales):
+    print(f"Del numero {a} se tiene que:")
+    print(f"{enteros} son los digitos enteros y {decimales} los decimales")
 
 if __name__ == "__main__":
-    print("Digita dos numeros enteros para hallar su MCM")
-    a = int(input("El primero:"))
-    b = int(input("El segundo:"))
-    mcd = iteracion(a,b)
-    mcm = funcionMcm(mcd,a,b)
-    fin(mcd,mcm,a,b)
+    a = float(input("Tu numero es: "))
+    enteros, decimales = num(a)
+    fin(a,enteros,decimales)
 ```
 ## Ejercicio 3
 ```python
@@ -61,6 +61,37 @@ if __name__ == "__main__":
     z = esp(x,y)
     print(x)
     print(y)
+```
+## Ejercicio 5
+```python
+def iteracion(a,b):
+    if a < b:
+        a, b = b, a
+    if a == b:
+        MCD = a
+        return MCD
+    else:
+        while a >= b:
+            residuo = a - b
+            if residuo == 0:
+                return a
+            a = residuo
+            if a < b:
+                a, b = b, a
+def funcionMcm(mcd,a,b):
+    mcm = int((a*b) / mcd)
+    return mcm
+def fin (mcd,mcm,a,b):
+    print(f"El maximo comun divisor de {a} y {b} es {mcd}, por ello:")
+    print(f"El minimo comun multiplo es igual a {mcm}")
+
+if __name__ == "__main__":
+    print("Digita dos numeros enteros para hallar su MCM")
+    a = int(input("El primero:"))
+    b = int(input("El segundo:"))
+    mcd = iteracion(a,b)
+    mcm = funcionMcm(mcd,a,b)
+    fin(mcd,mcm,a,b)
 ```
 ## Ejercicio 6
 ```python
