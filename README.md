@@ -1,5 +1,36 @@
 # T2
 Taller 2 
+## Ejercicio 2
+```python
+def iteracion(a,b):
+    if a < b:
+        a, b = b, a
+    if a == b:
+        MCD = a
+        return MCD
+    else:
+        while a >= b:
+            residuo = a - b
+            if residuo == 0:
+                return a
+            a = residuo
+            if a < b:
+                a, b = b, a
+def funcionMcm(mcd,a,b):
+    mcm = int((a*b) / mcd)
+    return mcm
+def fin (mcd,mcm,a,b):
+    print(f"El maximo comun divisor de {a} y {b} es {mcd}, por ello:")
+    print(f"El minimo comun multiplo es igual a {mcm}")
+
+if __name__ == "__main__":
+    print("Digita dos numeros enteros para hallar su MCM")
+    a = int(input("El primero:"))
+    b = int(input("El segundo:"))
+    mcd = iteracion(a,b)
+    mcm = funcionMcm(mcd,a,b)
+    fin(mcd,mcm,a,b)
+```
 ## Ejercicio 3
 ```python
 def num(x): # Funcion de Entero a Lista de Digitos
