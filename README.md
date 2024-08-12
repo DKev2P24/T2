@@ -98,7 +98,7 @@ if __name__ == "__main__":
     b = int(input("El segundo:"))
     mcd = mcd_iteracion(a,b)
     mcd2 = mcd_recursivo(a,b)
-    print(f"Se obtiene por iteracion al MCD como {mcd} y por recursion {mcd2}, es decir, el mismo resultado")
+    print(f"MCD por iteración: {mcd}, por recursion: {mcd2}, es decir, el mismo resultado")
     mcm = funcionMcm(mcd,a,b)
     fin(mcd,mcm,a,b)
 ```
