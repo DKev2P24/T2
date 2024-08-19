@@ -253,7 +253,7 @@ if __name__ == "__main__":
     q = m()
     z = j(q)
 ```
-##Ejercicio 7
+## Ejercicio 7
 ***
 Determinar si en una lista existe una cadena de caracteres con dos o más vocales e imprimirla, si no existe no se imprime.
 Se define primero la función para contar las vocales en una cadena, lo hace mediante un bucle for para cada caracter, añadiendo uno si encuentra una vocal. Para esto se define primero una cadena con todas las vocales en minusculas y mayusculas. Si el contador es igual o mayor a 2, retorna un valor booleano True, de lo contrario retorna false.
