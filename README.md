@@ -105,6 +105,63 @@ if __name__ == "__main__":
     print(x)
     print(y)
 ```
+## Ejercicio 4
+**
+Calcular la aproximación a la funcion coseno alrededor de 0 para cualquier x real usando la serie de Taylor.
+Para conseguir este objetivo, se usaron distintas funciones para que el codigo tenga más orden y se las pueda llamar cuando se ejecute main.
+Primero se definen 2 funciones base, la de valor absoluto y la factorial, esto para evitar usar las funciones que incluye math, aunque ambas opciones son validas. 
+```python
+def valor_absoluto(n): #Definir función de valor absoluto
+    if n >= 0:
+        return n
+    else:
+        return -n
+    
+def factorial(n): #Definir función factorial (Copiada de retos anteriores)
+    resultado = 1
+    for i in range(1, (n+1)):
+        resultado *= i 
+    return resultado
+```
+Luego se procede a definir la funcion de aproximación al coseno, usando la serie de Taylor proporcionada en el ejercicio, se llama a la función factorial para el numerador. Se itera n veces, teniendo en cuenta que n sera el numero de iteraciones que obtendremos después mediante la funcion de error.
+```python
+def coseno_taylor(x,n): #Calcular la aproximación de coseno utilizando n terminos de la serie de taylor
+    cos_aprox = 0 #Inicializar la aproximación del coseno en 0
+    for i in range(n): #Itera desde 0 hasta n-1
+        termino = ((-1)**i)*(x**(2*i)) / factorial(2*i) #Calcular el termino i de la serie de taylor
+        cos_aprox += termino #Suma el termino actual a la aproximación del coseno
+    return cos_aprox 
+```
+Para calcular el porcentaje de error relativo, se debe calcular el valor real del coseno usando math. Para mayor orden, se hacen dos listas, una de ellas con las tolerancias que buscamos, y otra que almacenará los resultados de n y los de error.
+Se usa la función de valor absoluto para obtener porcentajes positivos.
+```python
+def calcular_error(x): #Calcular los errores para distintos valores de n en la serie
+    cos_real = math.cos(x) #Calcula el coseno real
+    errores = [0.1, 0.01, 0.001, 0.0001] #Lista de tolerancias a evaluar
+    resultado = [] #Lista para almacenar resultados
+    for tolerancia in errores: #Itera sobre cada tolerancia en la lista
+        n=0
+        while True: #Bucle que se rompe cuando se encuentra n
+            n+=1 #Incrementa n en cada iteración
+            cos_aprox = coseno_taylor(x,n) #Calcula el coseno aproximado
+            error = valor_absoluto((cos_real - cos_aprox)/cos_real) #Calcula el error entre la aproximación y valor real, se usa valor absoluto para obtener resultados positivos
+            if error <= tolerancia:
+                resultado.append((n, tolerancia, error)) #Cuando el error sea menor o igual a la tolerancia, almacena n y el error en la lista de resultados
+                break 
+    return resultado
+```
+Finalmente, se llama a todas estas funciones y se imprime el valor real del coseno, el numero de iteraciones necesarias para cada tolerancia y el valor aproximado de la funcion para cada número de iteraciones.
+```python
+if __name__ == "__main__":
+    x = float(input("Ingrese un número real x menor a 30: ")) #Solicita al usuario ingresar el valor de x, tiene que ser menor a 30 porque el programa ya no funciona con factoriales más grandes a este.
+    cos_real = math.cos(x)
+    print(f"El valor real de la funcion coseno en x es {cos_real}") 
+    resultado = calcular_error(x) 
+    for n, tolerancia, error in resultado: #Calcula la aproximación con el numero de terminos encontrado.
+        cos_aprox = coseno_taylor(x,n) 
+        print(f"Para un error de {tolerancia*100}% se necesita un n = {n}")
+        print(f"Valor de cos aproximado con {n} iteraciones ≈ {cos_aprox}, con un error de {error*100}%")
+```
 ## Ejercicio 5
 ***
 La idea era desarrollar un programa que permita determinar el Minimo Comun Multiplo de dos numeros enteros, abordando el problema desde una perpectiva tanto iterativa como recursiva.
