@@ -232,12 +232,7 @@ if __name__ == "__main__": # Funcion main para indicar el inicio del codigo
 ## Ejercicio 9
 
 Escriba un programa que pida 5 Vectores y calcule las siguientes operaciones:
-El promedio,
-, La mediana
-, El promedio multiplicativo
-, Ordenar los números de forma ascendente y descendente
-, La potencia del mayor número elevado al menor número
-, La raíz cúbica del menor número
+El promedio, La mediana, El promedio multiplicativo, Ordenar los números de forma ascendente y descendente, La potencia del mayor número elevado al menor número y la raíz cúbica del menor número
 ```python
 def m(b): 
     # Función generadora de vectores
