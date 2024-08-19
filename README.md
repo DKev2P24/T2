@@ -48,31 +48,35 @@ if __name__ == "__main__": # Funcion main para iniciar el codigo
     enteros, decimales = num(a)
     fin(a,enteros,decimales)
 ```
-## Ejercicio 3
+## Ejercicio 3 (Números Espejos)
 ***
+Desarrollar un programa que permita ingresar dos números enteros y determinar si se tratan de números espejos.
 ```python
 def num(x): # Funcion de Entero a Lista de Digitos
-    k = []  # Lista VVacia a agregar Digitos
+    k = []  # Lista Vacia a agregar digitos
     while x > 0:  # para evitar problemas se toman valores positivos
         dg = x % 10  # se toma el ultimo digito, que es el residuo del cociente
-        k.insert(0, dg) #
-        x = x // 10
-    return k
+        k.insert(0, dg) # Se agrega el elemento a la primera posición de una lista
+        x = x // 10 # se toma el valor resultante de la division entera para continuar, asi hasta el ultimo digito
+    return k # regresa la lista con su numero espejo
 
-def esp(x,y):
+def esp(x, y):
+    # Verificar si ambos tienen la misma longitud
     if len(x) != len(y):
-        print("No son espejos. ")
+        print("No son espejos.")
         return
-    
+
+    # Comparar cada dígito
     for i in range(len(x)):
-        if x[i] == y[len(x)-1-i]:
-         print("Son Espejos")
-        else:
-         print("No son espejos")
-        return
+        if x[i] != y[len(x) - 1 - i]:
+            print("No son espejos.")
+            return
+    
+    # Si pasa todas las comparaciones, son espejos
+    print("Son Espejos.")
     
 if __name__ == "__main__":
-    a = int(input("A: "))
+    a = int(input("A: ")) # se ingresan los valores y se llaman a las funciones, respectivamente
     b = int(input("B: "))
     x = num(a)
     y = num(b)
@@ -147,27 +151,29 @@ if __name__ == "__main__": # Funcion main para iniciar el codigo
 ```
 ## Ejercicio 6
 ***
+Desarrollar un programa que determine si en una lista existen o no elementos repetidos. Pista: Maneje valores booleanos y utilice el operador in.
 ```python
-def m():
-    l = []
-    while True:
-        k = input(f"Ingrese el elemento {len(l) + 1} (o presione Enter para terminar): ")
+def m(): # Funcion para Ingresar Una Lista
+    l = [] # Lista a almacenar valores
+    while True: # Bucle para agregar digitos sin limite previo 
+        k = input(f"Ingrese el elemento {len(l) + 1} (o presione Enter para terminar): ") # se ingresan digitos hasta que el usuario desee
         if k == '':
             break
-        l.append(k)
-    return l
+        l.append(k) #see agrega los valores a la lista
+    return l # retorna la lista 
 
-def r(p):
-    for x in range(len(p)):
-        for y in range(x+1,len(p)):
-          if p[x] == p[y]:
-           print(p[x]," es repetido ", p.count(p[x]) - 1 , " veces" )
-           
-           
+def j(p): # Funcion contadora de repeticiones
+    k = [] # lista vacia para almacenar los valores que se repiten
+    for i in p: # se agrega a la lista los valores que se repitan y que no esten en dicha lista
+        if p.count(i) > 1 and k.count(i) == 0:
+             k.append(i)
+    for i in k: # se imprime los valores que se repiten junto con la cantidad de veces que se repite
+        print(f"{i} se repite {p.count(i) - 1} veces")
+    
 if __name__ == "__main__":
     print("Lista: ")
     q = m()
-    z = r(q)
+    z = j(q)
 ```
 ## Ejercicio 8
 ***
@@ -226,89 +232,126 @@ if __name__ == "__main__": # Funcion main para indicar el inicio del codigo
 ## Ejercicio 9
 ***
 ```python
-def m():
-    l = []
+def m(b): 
+    # Función generadora de listas
+    l = []  # Inicializa una lista vacía
     while True:
-        k = input(f"Ingrese el elemento {len(l) + 1} de la lista (o presione Enter para terminar): ")
-        if k == '':
+        # Solicita al usuario que ingrese un elemento para la lista
+        k = input(f"Ingrese el elemento {len(l) + 1} de la lista {b} (presione Enter para continuar con la siguiente lista): ")
+        if k == '': 
+            # Si el usuario no ingresa un valor, se termina la entrada de elementos para la lista actual
             break
-        l.append(float(k))
-    return l
+        l.append(float(k)) 
+        # Agrega el valor ingresado convertido a float a la lista
+    return l 
+    # Retorna la lista creada
 
-def prm(*args):
-    k = []
-    for j in range(len(args[0])):
+def prm(*args): 
+    # Calcula el promedio de las listas ingresadas
+    k = []  # Inicializa una lista para almacenar los promedios
+    for j in range(len(args[0])): 
+        # Itera sobre la longitud de la primera lista en args (asume que todas las listas tienen la misma longitud)
         x = 0
         for i in args:
-            x += (i[j])
-        k.insert(j, x/len(args))
-    return k
+            # Suma los elementos en la misma posición de cada lista
+            x += i[j]
+        k.insert(j, x / len(args)) 
+        # Calcula el promedio y lo inserta en la posición correspondiente
+    return k 
+    # Retorna la lista con los promedios
 
-def med(a,b,c,d,e):
-    q = []
-    p = len(a)
-    l = p//2
-    for i in range(p):
-        k = [a[i], b[i], c[i], d[i], e[i]]
-        k.sort()
-        q.append(k[l])
-    return q
+def med(a, b, c, d, e): 
+    # Calcula la mediana de las listas ingresadas
+    q = []  # Inicializa una lista para almacenar las medianas
+    p = len(a)  # Longitud de las listas (se asume que todas tienen la misma longitud)
+    l = p // 2  # Calcula el índice del valor central
+    for i in range(p): 
+        # Itera sobre la longitud de las listas
+        k = [a[i], b[i], c[i], d[i], e[i]] 
+        # Crea una lista con los elementos en la posición i de cada lista
+        k.sort() 
+        # Ordena la lista k
+        q.append(k[l]) 
+        # Agrega el valor medio (mediana) a la lista q
+    return q 
+    # Retorna la lista con las medianas
 
-def prmx(*args):
-    k = []
-    for j in range(len(args[0])):
+def prmx(*args): 
+    # Calcula el promedio geométrico de las listas ingresadas
+    k = []  # Inicializa una lista para almacenar los promedios geométricos
+    for j in range(len(args[0])): 
+        # Itera sobre la longitud de la primera lista en args
         x = 1
         for i in args:
-            x *= (i[j])
-        k.insert(j, x**1/(len(args)))
-    return k
+            # Multiplica los elementos en la misma posición de cada lista
+            x *= i[j]
+        k.append(x ** (1 / len(args))) 
+        # Calcula la raíz enésima del producto (promedio geométrico) y la agrega a k
+    return k 
+    # Retorna la lista con los promedios geométricos
 
-def ord(*args):
+def ord(*args): 
+    # Ordena las listas de menor a mayor
     for i in args:
-        i.sort()
+        i.sort() 
+        # Ordena cada lista individualmente
     print("Listas ordenadas de menor a mayor:")
     for i in args:
-        print(i)
+        print(i) 
+        # Imprime cada lista ordenada
 
-def ordx(*args):
+def ordx(*args): 
+    # Ordena las listas de mayor a menor
     for i in args:
-        i.sort(reverse=True)
+        i.sort(reverse=True) 
+        # Ordena cada lista individualmente en orden inverso
     print("Listas ordenadas de mayor a menor:")
     for i in args:
-        print(i)
+        print(i) 
+        # Imprime cada lista ordenada
 
-def mmx(*args):
-    k = []
+def mmx(*args): 
+    # Calcula el máximo de cada lista elevado al mínimo de la misma lista
+    k = []  # Inicializa una lista para almacenar los resultados
     for i in args:
-        l = max(i)**min(i)
-        k.append(l)
-    return print(k)
+        l = max(i) ** min(i) 
+        # Calcula el máximo elevado al mínimo y lo almacena en l
+        k.append(l) 
+        # Agrega el resultado a la lista k
+    return k 
+    # Retorna la lista con los resultados
 
-def minx(*args):
-    k = []
+def minx(*args): 
+    # Calcula la raíz cúbica del mínimo de cada lista
+    k = []  # Inicializa una lista para almacenar los resultados
     for i in args:
-     l = min(i)**(1/3)
-     k.append(l)
-    return k
+        l = min(i) ** (1/3) 
+        # Calcula la raíz cúbica del mínimo y lo almacena en l
+        k.append(l) 
+        # Agrega el resultado a la lista k
+    return k 
+    # Retorna la lista con los resultados
 
 if __name__ == "__main__":
-    p = m()
-    q = m()
-    r = m()
-    s = m()
-    t = m()
+    # Ejecuta las 5 listas 
+    p = m(1)  
+    q = m(2)  
+    r = m(3)  
+    s = m(4)  
+    t = m(5)  
     
-    z = prm(p, q, r, s, t)
-    k = med(p, q, r, s, t)
-    l = prmx(p, q, r, s, t)
-    i = minx(p, q, r, s, t)
-   
-
-    print("Promedio", z)
+    z = prm(p, q, r, s, t)  # Calcula el promedio de las listas
+    k = med(p, q, r, s, t)  # Calcula la mediana de las listas
+    l = prmx(p, q, r, s, t)  # Calcula el promedio geométrico de las listas
+    i = minx(p, q, r, s, t)  # Calcula la raíz cúbica del menor número en cada lista
+    c = mmx(p, q, r, s, t)  # Calcula el máximo elevado al mínimo en cada lista
+    
+    # Imprime los resultados
+    print("Promedio:", z)
     print("Mediana:", k)
     print("Promedio geométrico:", l)
-    ord(p, q, r, s, t)
-    ordx(p, q, r, s, t)
-    mmx(p, q, r, s, t)
-    print("raiz cubica del menor numero", i)
+    ord(p, q, r, s, t)  # Ordena las listas de menor a mayor
+    ordx(p, q, r, s, t)  # Ordena las listas de mayor a menor
+    print("Máximo elevado al mínimo:", c)
+    print("Raíz cúbica del menor número:", i)
 ```
