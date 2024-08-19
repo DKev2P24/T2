@@ -253,6 +253,39 @@ if __name__ == "__main__":
     q = m()
     z = j(q)
 ```
+##Ejercicio 7
+***
+Determinar si en una lista existe una cadena de caracteres con dos o más vocales e imprimirla, si no existe no se imprime.
+Se define primero la función para contar las vocales en una cadena, lo hace mediante un bucle for para cada caracter, añadiendo uno si encuentra una vocal. Para esto se define primero una cadena con todas las vocales en minusculas y mayusculas. Si el contador es igual o mayor a 2, retorna un valor booleano True, de lo contrario retorna false.
+```python
+def contiene_vocales(cadena:str): #Función para verificar si una cadena tiene dos o más vocales
+    vocales = "aeiouAEIOU" #Define todas las vocales en minúsculas y mayúsculas para verificar si los caracteres en una cadena son vocales
+    conteo_vocales = 0 #Inicia el contador de vocales
+    for char in cadena: #Itera sobre cada caracter de la cadena
+        if char in vocales: #Si el caracter es una vocal, añade 1 al contador
+            conteo_vocales +=1
+    return conteo_vocales >= 2 #Retornea True si el conteo es de 2 o más o false en caso contrario.
+```
+Posteriormente, se define una función que busca cadenas que tengan 2 o más vocales en una lista usando un ciclo for. Usa una bandera "encontrado" para que imprima todas las cadenas que cumplan con el requisito, de lo contrario solo imprimiría la primera. Si no existe ninguna, imprime "No existe
+```python
+def buscar_cadena_vocales(lista:str): #Busca las cadenas que cumplan el requisito
+    encontrado = False #Bandera para saber si una cadena cumple con el requisito 
+    for cadena in lista: #Para todas las cadenas en la lista
+        if contiene_vocales(cadena): #Si cumple con el requisito, cambia el booleano a True y la imprime.
+            print(cadena)
+            encontrado = True
+    if not encontrado: #Si no existe ninguna, imprime "No existe"
+        print("No existe")
+```
+Finalmente, se inicia main y se llama a las funciones, no sin antes usar un bucle for para que el usuario ingrese 3 palabras, y estas se añadan al final de una lista de cadenas. 
+```python
+if __name__ == "__main__":
+    lista_cadenas = [] #Lista de cadenas donde se ingresarán las palabras del usuario.
+    for i in range(3): #Ingresar 3 palabras y añadirlas a la lista de cadenas
+        palabra = input(f"Ingresa la palabra {i+1}: ")
+        lista_cadenas.append(palabra)
+    buscar_cadena_vocales(lista_cadenas) #Busca cadenas con 2 vocales o más
+```
 ## Ejercicio 8
 ***
 Se trabajó en desarrollar un programa que dadas dos listas determine que elementos tiene la primer lista que no tenga la segunda lista.
