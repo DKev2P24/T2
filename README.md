@@ -1,11 +1,32 @@
 # Taller 2 - Programación de computadores UNAL 2024-1
 **Equipo**: Ingenieros Megatróficos
 
-![logo](https://camo.githubusercontent.com/a12903c4e2f58575622e5cc1222df41a66748bec5311fb8b769d680428dbb9ff/68747470733a2f2f692e6962622e636f2f767652785072622f412d616469722d756e2d742d74756c6f2e706e67)
+![logo](https://i.ibb.co/440n654/A-adir-un-t-tulo.png)
 
 **Integrantes**: Julian Gustin, Kevin Castellanos y Lucas García.
 
 *Nota*: Para esta actividad se utilizó Python 3.12.5
+## Ejercicio 1
+***
+Desarrollar un programa que ingrese un número entero n y separe todos los digitos que lo componen.
+Para lograr este objetivo, se usaron los operadores % (Modulo) y // (División entera), el operador de modulo permite obtener el ultimo digito de un numero, pues al hacer modulo con 10, el residuo siempre será el ultimo digito del numero entero proporcionado.
+La división entera con 10 sirve para eliminar el ultimo digito, ya que similarmente al proceso con el operador de modulo, se obtiene la división entera sin el residuo. Al repetir este proceso, se obtienen todos los digitos y se los añade al final de una lista que después es revertida. Este proceso se repite mientras que n sea mayor a 0
+```python
+def separar_digitos(n:int)->int: #Definir función que separa los digitos
+    digitos = [] #Definir lista de digitos
+    while n > 0:
+        digito = n % 10 #Obtiene el ultimo digito
+        digitos.append(digito) #Agrega el digito al final de la lista
+        n = n//10 #Elimina el ultimo digito del numero
+    digitos.reverse() #Invierte la lista para obtener el orden correcto
+    return digitos #Devuelve la lista
+
+if __name__ == "__main__":
+    n = int(input("Ingrese un número entero: ")) #Solicita el número entero al usuario
+    digitos = separar_digitos(n) #Aplica la función al numero n
+    print(f"Los digitos del número {n} son {digitos}") #Imprime la lista de los digitos separados.
+```
+
 ## Ejercicio 2
 ***
 El objetivo era desarrollar un programa que ingrese un número flotante n y separe su parte entera de la parte decimal, y luego entregue los dígitos tanto de la parte entera como de la decimal.
