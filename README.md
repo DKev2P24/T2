@@ -230,136 +230,136 @@ if __name__ == "__main__": # Funcion main para indicar el inicio del codigo
     fin()
 ```
 ## Ejercicio 9
-*** Resolver el punto 7 del taller 1 usando operaciones con vectores.
- Escriba un programa que pida 5 números reales y calcule las siguientes operaciones:
+
+Escriba un programa que pida 5 Vectores y calcule las siguientes operaciones:
 El promedio
 La mediana
-El promedio multiplicativo (multilplica todos y luego calcula la raíz de la cantidad de operandos)
+El promedio multiplicativo
 Ordenar los números de forma ascendente
 Ordenar los números de forma descendente
 La potencia del mayor número elevado al menor número
 La raíz cúbica del menor número
 ```python
 def m(b): 
-    # Función generadora de listas
-    l = []  # Inicializa una lista vacía
+    # Función generadora de vectores
+    l = []  # Inicializa un vector vacía
     while True:
-        # Solicita al usuario que ingrese un elemento para la lista
-        k = input(f"Ingrese el elemento {len(l) + 1} de la lista {b} (presione Enter para continuar con la siguiente lista): ")
+        # Solicita al usuario que ingrese un elemento para el vector
+        k = input(f"Ingrese el elemento {len(l) + 1} de el vector {b} (presione Enter para continuar con la siguiente vector): ")
         if k == '': 
-            # Si el usuario no ingresa un valor, se termina la entrada de elementos para la lista actual
+            # Si el usuario no ingresa un valor, se termina la entrada de elementos para el vector actual
             break
         l.append(float(k)) 
-        # Agrega el valor ingresado convertido a float a la lista
+        # Agrega el valor ingresado convertido a float a el vector
     return l 
-    # Retorna la lista creada
+    # Retorna el vector creado
 
 def prm(*args): 
-    # Calcula el promedio de las listas ingresadas
-    k = []  # Inicializa una lista para almacenar los promedios
+    # Calcula el promedio de los vectores ingresados
+    k = []  # Inicializa un vector para almacenar los promedios
     for j in range(len(args[0])): 
-        # Itera sobre la longitud de la primera lista en args (asume que todas las listas tienen la misma longitud)
+        # Itera sobre la longitud de la primera vector en args (asume que todas los vectores tienen la misma longitud)
         x = 0
         for i in args:
-            # Suma los elementos en la misma posición de cada lista
+            # Suma los elementos en la misma posición de cada vector
             x += i[j]
         k.insert(j, x / len(args)) 
         # Calcula el promedio y lo inserta en la posición correspondiente
     return k 
-    # Retorna la lista con los promedios
+    # Retorna el vector con los promedios
 
 def med(a, b, c, d, e): 
-    # Calcula la mediana de las listas ingresadas
-    q = []  # Inicializa una lista para almacenar las medianas
-    p = len(a)  # Longitud de las listas (se asume que todas tienen la misma longitud)
+    # Calcula la mediana de los vectores ingresadas
+    q = []  # Inicializa un vector para almacenar las medianas
+    p = len(a)  # Longitud de los vectores (se asume que todas tienen la misma longitud)
     l = p // 2  # Calcula el índice del valor central
     for i in range(p): 
-        # Itera sobre la longitud de las listas
+        # Itera sobre la longitud de los vectores
         k = [a[i], b[i], c[i], d[i], e[i]] 
-        # Crea una lista con los elementos en la posición i de cada lista
+        # Crea un vector con los elementos en la posición i de cada vector
         k.sort() 
-        # Ordena la lista k
+        # Ordena el vector k
         q.append(k[l]) 
-        # Agrega el valor medio (mediana) a la lista q
+        # Agrega el valor medio (mediana) a el vector q
     return q 
-    # Retorna la lista con las medianas
+    # Retorna el vector con las medianas
 
 def prmx(*args): 
-    # Calcula el promedio geométrico de las listas ingresadas
-    k = []  # Inicializa una lista para almacenar los promedios geométricos
+    # Calcula el promedio geométrico de los vectores ingresadas
+    k = []  # Inicializa un vector para almacenar los promedios geométricos
     for j in range(len(args[0])): 
-        # Itera sobre la longitud de la primera lista en args
+        # Itera sobre la longitud del primer vector
         x = 1
         for i in args:
-            # Multiplica los elementos en la misma posición de cada lista
+            # Multiplica los elementos en la misma posición de cada vector
             x *= i[j]
         k.append(x ** (1 / len(args))) 
         # Calcula la raíz enésima del producto (promedio geométrico) y la agrega a k
     return k 
-    # Retorna la lista con los promedios geométricos
+    # Retorna el vector con los promedios geométricos
 
 def ord(*args): 
-    # Ordena las listas de menor a mayor
+    # Ordena los vectores de menor a mayor
     for i in args:
         i.sort() 
-        # Ordena cada lista individualmente
-    print("Listas ordenadas de menor a mayor:")
+        # Ordena cada vector individualmente
+    print("vectores ordenadas de menor a mayor:")
     for i in args:
         print(i) 
-        # Imprime cada lista ordenada
+        # Imprime cada vector ordenado
 
 def ordx(*args): 
-    # Ordena las listas de mayor a menor
+    # Ordena los vectores de mayor a menor
     for i in args:
         i.sort(reverse=True) 
-        # Ordena cada lista individualmente en orden inverso
-    print("Listas ordenadas de mayor a menor:")
+        # Ordena cada vector individualmente en orden inverso
+    print("vectores ordenadas de mayor a menor:")
     for i in args:
         print(i) 
-        # Imprime cada lista ordenada
+        # Imprime cada vector ordenado
 
 def mmx(*args): 
-    # Calcula el máximo de cada lista elevado al mínimo de la misma lista
-    k = []  # Inicializa una lista para almacenar los resultados
+    # Calcula el máximo de cada vector elevado al mínimo de la misma vector
+    k = []  # Inicializa un vector para almacenar los resultados
     for i in args:
         l = max(i) ** min(i) 
         # Calcula el máximo elevado al mínimo y lo almacena en l
         k.append(l) 
-        # Agrega el resultado a la lista k
+        # Agrega el resultado a el vector k
     return k 
-    # Retorna la lista con los resultados
+    # Retorna el vector con los resultados
 
 def minx(*args): 
-    # Calcula la raíz cúbica del mínimo de cada lista
-    k = []  # Inicializa una lista para almacenar los resultados
+    # Calcula la raíz cúbica del mínimo de cada vector
+    k = []  # Inicializa un vector para almacenar los resultados
     for i in args:
         l = min(i) ** (1/3) 
         # Calcula la raíz cúbica del mínimo y lo almacena en l
         k.append(l) 
-        # Agrega el resultado a la lista k
+        # Agrega el resultado a el vector k
     return k 
-    # Retorna la lista con los resultados
+    # Retorna el vector con los resultados
 
 if __name__ == "__main__":
-    # Ejecuta las 5 listas 
+    # Ejecuta las 5 vectores 
     p = m(1)  
     q = m(2)  
     r = m(3)  
     s = m(4)  
     t = m(5)  
     
-    z = prm(p, q, r, s, t)  # Calcula el promedio de las listas
-    k = med(p, q, r, s, t)  # Calcula la mediana de las listas
-    l = prmx(p, q, r, s, t)  # Calcula el promedio geométrico de las listas
-    i = minx(p, q, r, s, t)  # Calcula la raíz cúbica del menor número en cada lista
-    c = mmx(p, q, r, s, t)  # Calcula el máximo elevado al mínimo en cada lista
+    z = prm(p, q, r, s, t)  # Calcula el promedio de los vectores
+    k = med(p, q, r, s, t)  # Calcula la mediana de los vectores
+    l = prmx(p, q, r, s, t)  # Calcula el promedio geométrico de los vectores
+    i = minx(p, q, r, s, t)  # Calcula la raíz cúbica del menor número en cada vector
+    c = mmx(p, q, r, s, t)  # Calcula el máximo elevado al mínimo en cada vector
     
     # Imprime los resultados
     print("Promedio:", z)
     print("Mediana:", k)
     print("Promedio geométrico:", l)
-    ord(p, q, r, s, t)  # Ordena las listas de menor a mayor
-    ordx(p, q, r, s, t)  # Ordena las listas de mayor a menor
+    ord(p, q, r, s, t)  # Ordena los vectores de menor a mayor
+    ordx(p, q, r, s, t)  # Ordena los vectores de mayor a menor
     print("Máximo elevado al mínimo:", c)
     print("Raíz cúbica del menor número:", i)
 ```
