@@ -468,6 +468,88 @@ if __name__ == "__main__":
     print("Máximo elevado al mínimo:", c)
     print("Raíz cúbica del menor número:", i)
 ```
+## Ejercicio 10
+Se desarrolló una función que al ingresar una lista "A", independientemente de los números que se encuentran en esta, tome aquellos números que son múltiplos de 3 y los guarde en una lista nueva, la cual debe ser retornada por la función.
+
+Para esto, se requirió resolver el problema desde dos perspectivas:
+### Usando un patrón de acumulación
+```python
+# Se ingresa la lista A y retorna la lista de múltiplos
+def MultiplosDe3(listaA: list)-> list:
+    listaMultiplos: list = []
+    for i in range(0, len(listaA)): # Se comprueba cada elemento para saber si es múltiplo de 3 y agregarlo a la lista
+        if listaA[i] % 3 == 0:
+            listaMultiplos.append(listaA[i])
+    return listaMultiplos
+```
+### Usando comprensión de listas
+```python
+# Se ingresa la lista A y retorna la lista de múltiplos
+def MultiplosDe3(listaA: list)-> list: 
+    # Harán parte de la lista de múltiplos todos los elementos de la lista A que su residuo al dividirse entre 3 sea 0
+    listaMultiplos: list = [listaA[i] for i in range(0,len(listaA)) if listaA[i] % 3 == 0]
+    return listaMultiplos
+```
+### Finalmente
+Se planteó el desafio de analizar estos múltiplos de 3 en la lista A sin utilizar el operador "%", lo cuál se realizó de la siguiente forma:
+
+```python
+# Se ingresa la lista A y retorna la lista de múltiplos
+def MultiplosDe3(listaA: list)-> list:
+
+    # Se declaran e inicializan variables 
+    listaMultiplos: list = []
+    i : int = 0
+    j : int = 0
+    for i in range(0,len(listaA)): # Ciclo para todos los elementos de la lista A
+        h : int = 0
+        n : int = 0
+        dg : int = 0
+        x : int = abs(listaA[i]) # Se toma el valor absoluto para extraer los dígitos sin problemas de un número negativo
+        listaDeDigitos: list = []
+        if x == 0: # Caso puntual del elemento 0 que es múltiplo común
+            listaMultiplos.append(listaA[i])
+
+        # Mientras x sea un número entero positivo
+        while x > 0:
+            # Se toma el residuo al dividirse entre 10 y ese valor se agrega a la lista de digitos
+            dg = x % 10
+            listaDeDigitos.insert(0,dg)
+            x //= 10
+
+        # Patrón de acumulación para sumar los digitos del elemento actual    
+        for j in range(0,len(listaDeDigitos)):
+            n += listaDeDigitos[j]
+
+        # Ciclo para agregar aquellos elementos cuya suma de sus digitos sea un múltiplo de 3
+        while h < 10*len(listaDeDigitos): # Se itera la condición hasta que el factor de 3 sea mayor a 10 veces la cantidad de digitos
+            if n == 3*h:
+                listaMultiplos.append(listaA[i])
+            h += 1
+    return listaMultiplos
+```
+Y este es el código en general para crear la lista A, y con el método preferido se obtendrán los múltiplos que se mostrarán en la terminal.
+```python
+def crearLista()-> list: # Funcion para Ingresar Una Lista
+    l : list= [] # Lista a almacenar valores
+    while True: # Bucle para agregar digitos sin limite previo 
+        try:
+            k = int(input(f"Ingrese el elemento {len(l) + 1} (o presione Enter para terminar): ")) # Se ingresan cuantos elementos se desee
+        except ValueError:
+            break # Se rompe el ciclo cuando se ingresa un valor incorrecto
+        l.append(k) # se agrega a l
+    return l # retorna la lista 
+
+def Resultados(Multiplos: list): # Se imprimen resultados
+    print(f"De la lista ingresada {listaA}, los números múltiplos de 3 son:")
+    print(Multiplos)
+
+if __name__ == "__main__": # Funcion main para indicar el inicio del codigo
+    # Se utilizan las tres funciones
+    listaA = crearLista()
+    Multiplos = MultiplosDe3(listaA)
+    Resultados(Multiplos)
+```
 ## Ejercicio 11
 Algoritmo para identificar si una matriz cuadrada es mágica.
 Una matriz es magica cuando la suma de todas sus filas, columnas y diagonales es la misma. Para saber esto, usamos una función que primero identifique si la matriz es cuadrada, identificando si cada linea tiene n elementos.
