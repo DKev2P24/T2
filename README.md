@@ -4,7 +4,7 @@
 ![logo](https://i.ibb.co/440n654/A-adir-un-t-tulo.png)
 
 **Integrantes**:
-- Julian Gustin 
+- Julian Gustin T.I. 1081275973
 - Kevin Castellanos T.I. 1052338203
 - Lucas García T.I. 1062434165
 
