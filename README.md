@@ -4,8 +4,8 @@
 ![logo](https://i.ibb.co/440n654/A-adir-un-t-tulo.png)
 
 **Integrantes**:
-- Julian Gustin
-- Kevin Castellanos
+- Julian Gustin 
+- Kevin Castellanos T.I. 1052338203
 - Lucas García T.I. 1062434165
 
 *Nota*: Para esta actividad se utilizó Python 3.12.5
