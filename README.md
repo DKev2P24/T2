@@ -9,6 +9,7 @@
 - Lucas García T.I. 1062434165
 
 *Nota*: Para esta actividad se utilizó Python 3.12.5
+*Nota 2*: Se subieron los archivos del ejercicio 7 y 11 posterior a la fecha de entrega, pero los ejercicios ya estaban escritos en el repositorio.
 ## Ejercicio 1
 ***
 Desarrollar un programa que ingrese un número entero n y separe todos los digitos que lo componen.
